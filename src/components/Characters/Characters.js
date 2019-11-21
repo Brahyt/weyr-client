@@ -5,6 +5,19 @@ import CharacterList from './CharacterList'
 import CreateCharacter from './CreateCharacter'
 
 class Characters extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      characters: [
+
+      ]
+    }
+  }
+  componentDidMount() {
+    fetch('http://localhost:8000/api/characters')
+      .then(res => res.json())
+      .then(res => console.log(res))
+  }
   render() {
     return (
       <div>
