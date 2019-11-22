@@ -3,12 +3,15 @@ import { NavLink } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import CharacterList from './CharacterList'
 import CreateCharacter from './CreateCharacter'
+import CharacterDetails from './CharacterDetails'
 
 class Characters extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      characters: []
+      characters: [],
+      stickers: [],
+      character: {},
     }
   }
   componentDidMount() {
@@ -26,7 +29,7 @@ class Characters extends React.Component {
       .then(data => {
         this.setState({
           characters: [...data[0]],
-          stickers: [...data[1]]
+          stickers: [...data[1]],
         })
       })
     //    fetch('http://localhost:8000/api/characters')
@@ -35,16 +38,44 @@ class Characters extends React.Component {
     //        this.setState({characters: [...data]})
     //      })
   }
+  grabSingleChar = (id) => {
+    fetch(`http://localhost:8000/api/characters/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          ...this.state,
+          character: {...data}
+        })
+      })
+  }
 
   render() {
     return (
       <div>
         <h1>Characters</h1>
-        <Route path="/characters/create" component={CreateCharacter}/>
+        <Route
+          exact path="/characters/:id"
+          render={({match, history, location}) => (
+            <CharacterDetails 
+              character={this.state.character}
+            />
+          )}
+        />
+        <Route 
+          path="/characters/create" 
+          render={({match, history, location})=>(
+            <CreateCharacter 
+              stickers={this.state.stickers}
+            />
+          )}
+        />
         <Route path="/characters">
         <NavLink to="/characters/create">Create</NavLink>
         <CharacterList
           charProps={this.state.characters}
+          linkToChar={this.grabSingleChar}
+          character={this.state.character}
+          stickers={this.state.stickers}
         />
         </Route>
       </div>

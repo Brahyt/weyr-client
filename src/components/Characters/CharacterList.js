@@ -8,6 +8,7 @@ function CharacterList(props) {
         return <EachCharOnList
           key={char.char_id}
           charProps={char}
+          linkToChar={props.linkToChar}
         />
       })}
     </div>

@@ -175,7 +175,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_1_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
           <label>
@@ -186,7 +188,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_2_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
           <label>
@@ -197,7 +201,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_3_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
           <label>
@@ -208,7 +214,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_4_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
           <label>
@@ -219,7 +227,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_5_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
           <label>
@@ -230,7 +240,9 @@ class CreateCharacter extends React.Component {
               value={this.state.sticker_6_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value="1">TEMP</option>
+              {this.props.stickers.map(sticker => {
+                return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
+              })}
             </select>
           </label>
         </form>
