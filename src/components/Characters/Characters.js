@@ -12,11 +12,28 @@ class Characters extends React.Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:8000/api/characters')
-      .then(res => res.json())
+    const urls = [
+      'http://localhost:8000/api/characters',
+      'http://localhost:8000/api/stickers'
+    ]
+    Promise.all(urls.map(url => {
+      return fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          return data
+        })
+    }))
       .then(data => {
-        this.setState({characters: [...data]})
+        this.setState({
+          characters: [...data[0]],
+          stickers: [...data[1]]
+        })
       })
+    //    fetch('http://localhost:8000/api/characters')
+    //      .then(res => res.json())
+    //      .then(data => {
+    //        this.setState({characters: [...data]})
+    //      })
   }
 
   render() {
