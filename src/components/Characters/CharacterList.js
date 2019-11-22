@@ -1,12 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import EachCharOnList from './EachCharOnList'
 
-function CharacterList() {
+function CharacterList(props) {
   return (
     <div>
-      <Route exact path="/characters">
-        <h1>list</h1>
-      </Route>
+      {props.charProps.map(char => {
+        return <EachCharOnList
+          key={char.char_id}
+          charProps={char}
+        />
+      })}
     </div>
   );
 }

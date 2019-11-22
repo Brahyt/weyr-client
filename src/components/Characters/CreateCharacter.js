@@ -31,24 +31,27 @@ class CreateCharacter extends React.Component {
       [target]: event.target.value
     })
   }
+  handleSubmit(event){
+    event.preventDefault();
+  }
   render() {
     return (
       <div>
         <form>
           <label>
             Name:
-            <input 
-              type="text" 
-              name="name" 
+            <input
+              type="text"
+              name="name"
               value={this.state.name}
               onChange={(e) => this.handleChange(e)}
             />
           </label>
           <label>
             Race:
-            <select 
-              id="race" 
-              name="race" 
+            <select
+              id="race"
+              name="race"
               value={this.state.race}
               onChange={(e) => this.handleChange(e)}
             >
@@ -61,8 +64,8 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             Class:
-            <select 
-              id="char_class" 
+            <select
+              id="char_class"
               name="char_class"
               onChange={(e) => this.handleChange(e)}
             >
@@ -74,8 +77,8 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             Sub Class:
-            <select 
-              id="sub_class" 
+            <select
+              id="sub_class"
               name="sub_class"
               onChange={(e) => this.handleChange(e)}
             >
