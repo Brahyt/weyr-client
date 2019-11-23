@@ -25,6 +25,7 @@ class Characters extends React.Component {
               stickers={this.props.stickers}
               parties={this.props.parties}
               handleSubmitChar={this.props.handleSubmitChar}
+              history={history}
             />
           )}
         />

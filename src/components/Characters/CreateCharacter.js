@@ -11,8 +11,8 @@ class CreateCharacter extends React.Component {
       xp: '',
       hand_size: '',
       health: '',
-      party_id: '',
-      user_id: '',
+      party_id: '1',
+      user_id: '1',
       sticker_1_id: '',
       sticker_2_id: '',
       sticker_3_id: '',
@@ -39,7 +39,10 @@ class CreateCharacter extends React.Component {
     return (
       <div>
         <form
-          onSubmit={(e) => this.props.handleSubmitChar(e, this.state)}
+          onSubmit={(e) => {
+            this.props.handleSubmitChar(e, this.state)
+            this.props.history.push('/characters')
+          }}
         >
           <label>
             Name:

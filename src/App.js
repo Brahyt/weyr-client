@@ -14,6 +14,10 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    this.grabData()
+  }
+
+  grabData = () => {
     const urls = [
       'http://localhost:8000/api/characters',
       'http://localhost:8000/api/stickers',
@@ -33,16 +37,26 @@ class App extends React.Component {
           parties: [...data[2]],
         })
       })
-  }
-  sendData = (endpoint, data) => {
-    return fetch(`http://localhost:8000/api/${endpoint}`)
-      .then(result => result.json())
 
   }
-  handleSubmitChar = (e) => {
+  sendData = (endpoint, data, option) => {
+    return fetch(`http://localhost:8000/api/${endpoint}`, option)
+      .then(result => result.json())
+      .then(data => {
+        this.grabData()
+      })
+
+  }
+  handleSubmitChar = (e, newCharacter) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newCharacter)
+    }
     e.preventDefault()
-    console.log(e.target)
-    this.sendData()
+    this.sendData("characters", newCharacter, options)
   }
   grabSingleChar = (id) => {
     fetch(`http://localhost:8000/api/characters/${id}`)
