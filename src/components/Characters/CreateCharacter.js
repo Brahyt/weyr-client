@@ -35,9 +35,12 @@ class CreateCharacter extends React.Component {
     event.preventDefault();
   }
   render() {
+    console.log(this.props)
     return (
       <div>
-        <form>
+        <form
+          onSubmit={(e) => this.props.handleSubmitChar(e, this.state)}
+        >
           <label>
             Name:
             <input
@@ -119,20 +122,23 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             Party:
-            <input 
-              id="party_id" 
+            <select
+              id="party_id"
               name="party_id"
-              type="number" 
               value={this.state.party_id}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {this.props.parties.map(party => {
+                return <option value={party.party_id}>{party.name}</option>
+              })}
+            </select>
           </label>
           <label>
             Arcane:
-            <input 
-              id="arcane" 
+            <input
+              id="arcane"
               name="arcane"
-              type="number" 
+              type="number"
               value={this.state.arcane}
               onChange={(e) => this.handleChange(e)}
             />
@@ -245,6 +251,8 @@ class CreateCharacter extends React.Component {
               })}
             </select>
           </label>
+          <button
+          >Create</button>
         </form>
       </div>
     );

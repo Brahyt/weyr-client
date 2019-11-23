@@ -5,12 +5,76 @@ import Characters from './components/Characters/Characters'
 import Parties from './components/Parties/Parties'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      characters: [],
+      stickers: [],
+      character: {},
+    }
+  }
+  componentDidMount() {
+    const urls = [
+      'http://localhost:8000/api/characters',
+      'http://localhost:8000/api/stickers',
+      'http://localhost:8000/api/parties'
+    ]
+    Promise.all(urls.map(url => {
+      return fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          return data
+        })
+    }))
+      .then(data => {
+        this.setState({
+          characters: [...data[0]],
+          stickers: [...data[1]],
+          parties: [...data[2]],
+        })
+      })
+  }
+  sendData = (endpoint, data) => {
+    return fetch(`http://localhost:8000/api/${endpoint}`)
+      .then(result => result.json())
+
+  }
+  handleSubmitChar = (e) => {
+    e.preventDefault()
+    console.log(e.target)
+    this.sendData()
+  }
+  grabSingleChar = (id) => {
+    fetch(`http://localhost:8000/api/characters/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          ...this.state,
+          character: {...data}
+        })
+      })
+  }
 
   render(props) {
     return (
       <div className="App">
         <Navbar />
-        <Route path='/characters' component={Characters}/>
+        <Route
+          path='/characters' 
+          render={({match, history, location}) => (
+            <Characters 
+              match={match}
+              history={history}
+              location={location}
+              characters={this.state.characters}
+              character={this.state.character}
+              parties={this.state.parties}
+              stickers={this.state.stickers}
+              linkToChar={this.grabSingleChar}
+              handleSubmitChar={this.handleSubmitChar}
+            />
+          )}
+        />
         <Route path='/parties' component={Parties}/>
       </div>
     );
