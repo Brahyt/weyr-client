@@ -9,8 +9,10 @@ class App extends React.Component {
     super(props)
     this.state = {
       characters: [],
-      stickers: [],
       character: {},
+      stickers: [],
+      parties: [],
+      party:{},
     }
   }
   componentDidMount() {
@@ -21,7 +23,7 @@ class App extends React.Component {
     const urls = [
       'http://localhost:8000/api/characters',
       'http://localhost:8000/api/stickers',
-      'http://localhost:8000/api/parties'
+      'http://localhost:8000/api/parties',
     ]
     Promise.all(urls.map(url => {
       return fetch(url)
@@ -89,7 +91,18 @@ class App extends React.Component {
             />
           )}
         />
-        <Route path='/parties' component={Parties}/>
+        <Route 
+          path='/parties' 
+          render={({match, history, location}) => (
+            <Parties
+              match={match}
+              hostory={history}
+              location={location}
+              parties={this.state.parties}
+              party={this.state.party}
+              characters={this.state.characters}
+            />
+          )}/>
       </div>
     );
   }

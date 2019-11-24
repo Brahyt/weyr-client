@@ -35,7 +35,6 @@ class CreateCharacter extends React.Component {
     event.preventDefault();
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <form
