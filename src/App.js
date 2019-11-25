@@ -62,8 +62,11 @@ class App extends React.Component {
     this.sendData(`parties`, options)
   }
   handleRemoveChar = (e, characterId) => {
-    const grabChar = this.state.characters.filter(char => char.char_id === characterId)
+    const grabChar = this.state.characters.filter(char => {
+      return char.char_id === characterId
+    })
     const patchData = {
+      ...grabChar,
       party_id: null }
 
     const options = {
@@ -74,9 +77,21 @@ class App extends React.Component {
       body: JSON.stringify(patchData)
     }
     e.preventDefault()
+    console.log("HANDLE REMOVE", patchData)
     this.sendData(`characters/${characterId}`, options )
   }
 
+  handleDeleteChar = (e, charId) => {
+    e.preventDefault()
+    console.log(charId)
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    this.sendData(`characters/${charId}`, options)
+  }
   handleSubmitChar = (e, newCharacter) => {
     const options = {
       method: "POST",
@@ -128,6 +143,7 @@ class App extends React.Component {
               stickers={this.state.stickers}
               linkToChar={this.grabSingleChar}
               handleSubmitChar={this.handleSubmitChar}
+              deleteChar={this.handleDeleteChar}
               editChar={this.handleEditChar}
             />
           )}

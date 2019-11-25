@@ -261,6 +261,9 @@ class EditCharacter extends React.Component {
           </label>
           <button
           >Create</button>
+          <button
+            onClick={(e) => this.props.deleteChar(e, this.state.char_id)}
+          >Delete</button>
         </form>
       </div>
     );

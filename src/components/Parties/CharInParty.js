@@ -1,6 +1,7 @@
 import React from 'react';
 
 function CharInParty(props) {
+  console.log(props)
   return (
     <div>
       <h4>{props.name}</h4>

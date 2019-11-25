@@ -30,6 +30,7 @@ class Characters extends React.Component {
               character={this.props.character}
               characters={this.props.characters}
               editChar={this.props.editChar}
+              deleteChar={this.props.deleteChar} 
             />
           )}
         />
