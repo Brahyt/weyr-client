@@ -45,28 +45,18 @@ class App extends React.Component {
     return fetch(`http://localhost:8000/api/${endpoint}`, options)
       .then(result => result.json())
       .then(data => {
-        console.log('EXPORTING THIS', data)
+        console.log(data)
         this.grabData()
       })
 
   }
-  createParty = (e, name) => {
-    const options = {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({name: name})
-    }
-    e.preventDefault()
-    this.sendData(`parties`, options)
+  changeCreateParty = (e, name) => {
+
   }
   handleRemoveChar = (e, characterId) => {
-    const grabChar = this.state.characters.filter(char => {
-      return char.char_id === characterId
-    })
+    const grabChar = this.state.characters.filter(char => char.char_id === characterId)
     const patchData = {
-      ...grabChar,
+      //      ...grabChar[0],
       party_id: null }
 
     const options = {
@@ -77,21 +67,9 @@ class App extends React.Component {
       body: JSON.stringify(patchData)
     }
     e.preventDefault()
-    console.log("HANDLE REMOVE", patchData)
     this.sendData(`characters/${characterId}`, options )
   }
 
-  handleDeleteChar = (e, charId) => {
-    e.preventDefault()
-    console.log(charId)
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }
-    this.sendData(`characters/${charId}`, options)
-  }
   handleSubmitChar = (e, newCharacter) => {
     const options = {
       method: "POST",
@@ -102,18 +80,6 @@ class App extends React.Component {
     }
     e.preventDefault()
     this.sendData("characters", options)
-  }
-  handleEditChar = (e, editedChar) => {
-    e.preventDefault()
-    const char_id = editedChar.char_id
-    const options = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(editedChar)
-    }
-    this.sendData(`characters/${char_id}`, options)
   }
   grabSingleChar = (id) => {
     fetch(`http://localhost:8000/api/characters/${id}`)
@@ -126,6 +92,14 @@ class App extends React.Component {
       })
   }
 
+  handleDeleteParty = (e, id) => {
+    e.preventDefault()
+    console.log(id)
+    const options = {
+      method: "DELETE",
+    }
+this.sendData(`/parties/${id}`, options)
+  }
   render(props) {
     return (
       <div className="App">
@@ -143,8 +117,6 @@ class App extends React.Component {
               stickers={this.state.stickers}
               linkToChar={this.grabSingleChar}
               handleSubmitChar={this.handleSubmitChar}
-              deleteChar={this.handleDeleteChar}
-              editChar={this.handleEditChar}
             />
           )}
         />
@@ -159,7 +131,7 @@ class App extends React.Component {
               party={this.state.party}
               characters={this.state.characters}
               removeChar={this.handleRemoveChar}
-              createParty={this.createParty}
+              deleteParty={this.handleDeleteParty}
             />
           )}/>
       </div>

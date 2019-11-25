@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PartiesList from './PartiesList';
 import CreateParty from './CreateParty'
 
@@ -7,15 +7,12 @@ function Parties(props) {
   return (
     <div>
       <h1>Your Parties</h1>
-      <Route exact path='/parties/create'>
-        <CreateParty
-          createParty={props.createParty}
-        />
-      </Route>
+      <CreateParty />
       <PartiesList
         parties={props.parties}
         characters={props.characters}
         removeChar={props.removeChar}
+        deleteParty={props.deleteParty}
       />
     </div>
   );

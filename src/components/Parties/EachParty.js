@@ -8,6 +8,9 @@ function EachParty(props) {
   return (
     <div>
       {props.name}
+      <button
+        onClick={(e) => props.deleteParty(e, props.party_id)}
+      >Delete</button>
       {charactersInParty.map(char => {
         return(
         <CharInParty 

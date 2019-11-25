@@ -45,6 +45,7 @@ class EditCharacter extends React.Component {
       <div>
         <form
           onSubmit={(e) => {
+            e.preventDefault()
             this.props.editChar(e, this.state)  //<HERE, changing to edit
             this.props.history.push('/characters')
           }}
@@ -136,6 +137,7 @@ class EditCharacter extends React.Component {
               value={this.state.party_id}
               onChange={(e) => this.handleChange(e)}
             >
+              <option key={0} value={null}>None</option>
               {this.props.parties.map(party => {
                 return <option key={party.party_id} value={party.party_id}>{party.name}</option>
               })}
