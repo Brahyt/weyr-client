@@ -59,6 +59,7 @@ class App extends React.Component {
 
   }
   createParty = (e, name) => {
+    e.preventDefault()
     const options = {
       method: 'POST',
       headers: {
@@ -66,7 +67,6 @@ class App extends React.Component {
       },
       body: JSON.stringify({name: name})
     }
-    e.preventDefault()
     this.sendData(`parties`, options)
   }
   handleRemoveChar = (e, characterId) => {
@@ -164,6 +164,7 @@ class App extends React.Component {
               characters={this.state.characters}
               removeChar={this.handleRemoveChar}
               createParty={this.createParty}
+              deleteParty={this.handleDeleteParty}
             />
           )}/>
       </div>

@@ -7,7 +7,9 @@ function Parties(props) {
   return (
     <div>
       <h1>Your Parties</h1>
-      <CreateParty />
+      <CreateParty
+        createParty={props.createParty}
+      />
       <PartiesList
         parties={props.parties}
         characters={props.characters}
