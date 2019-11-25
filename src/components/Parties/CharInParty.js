@@ -7,7 +7,9 @@ function CharInParty(props) {
       <h5>{props.class} - {props.sub_class}</h5>
       <h6>Xp: {props.xp}</h6>
       <h6>Health: {props.health}</h6>
-      <button>Remove</button>
+      <button
+        onClick={(e) => props.removeChar(e, props.id)}
+      >Remove</button>
     </div>
   );
 }

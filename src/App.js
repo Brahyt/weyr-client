@@ -41,14 +41,32 @@ class App extends React.Component {
       })
 
   }
-  sendData = (endpoint, data, option) => {
-    return fetch(`http://localhost:8000/api/${endpoint}`, option)
+  sendData = (endpoint, options) => {
+    return fetch(`http://localhost:8000/api/${endpoint}`, options)
       .then(result => result.json())
       .then(data => {
+        console.log(data)
         this.grabData()
       })
 
   }
+  handleRemoveChar = (e, characterId) => {
+    const grabChar = this.state.characters.filter(char => char.char_id === characterId)
+    const patchData = {
+      //      ...grabChar[0],
+      party_id: null }
+
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(patchData)
+    }
+    e.preventDefault()
+    this.sendData(`characters/${characterId}`, options )
+  }
+
   handleSubmitChar = (e, newCharacter) => {
     const options = {
       method: "POST",
@@ -58,7 +76,7 @@ class App extends React.Component {
       body: JSON.stringify(newCharacter)
     }
     e.preventDefault()
-    this.sendData("characters", newCharacter, options)
+    this.sendData("characters", options)
   }
   grabSingleChar = (id) => {
     fetch(`http://localhost:8000/api/characters/${id}`)
@@ -101,6 +119,7 @@ class App extends React.Component {
               parties={this.state.parties}
               party={this.state.party}
               characters={this.state.characters}
+              removeChar={this.handleRemoveChar}
             />
           )}/>
       </div>

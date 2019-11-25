@@ -9,6 +9,7 @@ function Parties(props) {
       <PartiesList
         parties={props.parties}
         characters={props.characters}
+        removeChar={props.removeChar}
       />
     </div>
   );

@@ -11,6 +11,7 @@ function PartiesList(props) {
           name={party.name}
           party_id={party.party_id}
           characters={props.characters}
+          removeChar={props.removeChar}
         />
         )
       })}

@@ -18,6 +18,7 @@ function EachParty(props) {
           sub_class={char.sub_class}
           health={char.health}
           xp={char.xp}
+          removeChar={props.removeChar}
         />
         ) 
       })}
