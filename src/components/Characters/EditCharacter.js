@@ -1,28 +1,34 @@
 import React from 'react';
 
-class CreateCharacter extends React.Component {
+class EditCharacter extends React.Component {
   constructor(props){
     super(props)
+    const [stickers] = this.props.characters.filter(character => {
+      return character.char_id === this.props.character.char_id
+    })
+    const {character} = this.props
     this.state = {
-      name: '',
-      race: 'Human',
-      char_class: 'Arcane',
-      sub_class: 'Wizard',
-      xp: '',
-      hand_size: '',
-      health: '',
-      party_id: '1',
-      user_id: '1',
-      sticker_1_id: '1',
-      sticker_2_id: '1',
-      sticker_3_id: '1',
-      sticker_4_id: '1',
-      sticker_5_id: '1',
-      sticker_6_id: '1',
-      arcane: '',
-      deception: '',
-      martial: '',
-      devotion: ''
+      char_id: character.char_id,
+      name: character.name,
+      race: character.race,
+      char_class: character.char_class,
+      sub_class: character.sub_class,
+      xp: character.xp,
+      hand_size: character.hand_size,
+      health: character.health,
+      party_id: character.party_id,
+      user_id: character.user_id,
+      sticker_1_id: stickers.sticker_1_id,
+      sticker_2_id: stickers.sticker_2_id,
+      sticker_3_id: stickers.sticker_3_id,
+      sticker_4_id: stickers.sticker_4_id,
+      sticker_5_id: stickers.sticker_5_id,
+      sticker_6_id: stickers.sticker_6_id,
+      equipment_pack_id: stickers.equipment_pack_id,
+      arcane: character.equipment.arcane,
+      deception: character.equipment.deception,
+      martial: character.equipment.martial,
+      devotion: character.equipment.devotion
     }
   }
   handleChange(event){
@@ -39,7 +45,7 @@ class CreateCharacter extends React.Component {
       <div>
         <form
           onSubmit={(e) => {
-            this.props.handleSubmitChar(e, this.state)
+            this.props.editChar(e, this.state)  //<HERE, changing to edit
             this.props.history.push('/characters')
           }}
         >
@@ -131,7 +137,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {this.props.parties.map(party => {
-                return <option value={party.party_id}>{party.name}</option>
+                return <option key={party.party_id} value={party.party_id}>{party.name}</option>
               })}
             </select>
           </label>
@@ -260,4 +266,4 @@ class CreateCharacter extends React.Component {
     );
   }
 }
-export default CreateCharacter;
+export default EditCharacter;
