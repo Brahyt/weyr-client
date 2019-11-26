@@ -11,7 +11,7 @@ class CreateCharacter extends React.Component {
       xp: '',
       hand_size: '',
       health: '',
-      party_id: null,
+      party_id: '0',
       user_id: '1',
       sticker_1_id: '1',
       sticker_2_id: '1',
@@ -96,10 +96,10 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             XP:
-            <input 
-              id= "xp" 
-              name= "xp"
-              type="number" 
+            <input
+              id="xp"
+              name="xp"
+              type="number"
               onChange={(e) => this.handleChange(e)}
             />
           </label>
@@ -115,7 +115,7 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             Health:
-            <input 
+            <input
               id="health"
               name="health"
               type="number"
@@ -131,9 +131,11 @@ class CreateCharacter extends React.Component {
               value={this.state.party_id}
               onChange={(e) => this.handleChange(e)}
             >
-              <option value={null}>None</option>
+              <option value="0">None</option>
               {this.props.parties.map(party => {
-                return <option key={party.party_id} value={party.party_id}>{party.name}</option>
+                return <option 
+                  key={party.party_id} 
+                  value={party.party_id}>{party.name}</option>
               })}
             </select>
           </label>

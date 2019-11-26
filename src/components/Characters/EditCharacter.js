@@ -102,19 +102,19 @@ class EditCharacter extends React.Component {
           </label>
           <label>
             XP:
-            <input 
-              id= "xp" 
+            <input
+              id= "xp"
               name= "xp"
-              type="number" 
+              type="number"
               onChange={(e) => this.handleChange(e)}
             />
           </label>
           <label>
             Hand Size:
-            <input 
-              id="hand_size" 
+            <input
+              id="hand_size"
               name="hand_size"
-              type="number" 
+              type="number"
               value={this.state.hand_size}
               onChange={(e) => this.handleChange(e)}
             />
@@ -262,7 +262,7 @@ class EditCharacter extends React.Component {
             </select>
           </label>
           <button
-          >Create</button>
+          >Edit</button>
           <button
             onClick={(e) => this.props.deleteChar(e, this.state.char_id)}
           >Delete</button>

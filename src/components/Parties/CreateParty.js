@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import PartiesList from './PartiesList';
 
 class CreateParty extends React.Component {
   constructor(props){
@@ -18,7 +16,10 @@ class CreateParty extends React.Component {
     return (
       <div>
         <form
-          onSubmit={(e) => this.props.createParty(e, this.state.name)}
+          onSubmit={(e) => {
+            this.props.createParty(e, this.state.name)
+            this.props.history.push('/parties')
+          }}
         >
           <label>
             Party Name:

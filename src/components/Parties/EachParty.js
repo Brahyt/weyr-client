@@ -13,7 +13,7 @@ function EachParty(props) {
       >Delete</button>
       {charactersInParty.map(char => {
         return(
-        <CharInParty 
+        <CharInParty
           key={char.char_id}
           id={char.char_id}
           name={char.name}
@@ -23,7 +23,7 @@ function EachParty(props) {
           xp={char.xp}
           removeChar={props.removeChar}
         />
-        ) 
+        )
       })}
     </div>
   );

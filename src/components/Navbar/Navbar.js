@@ -5,6 +5,7 @@ function Navbar() {
   return (
     <nav>
       <NavLink to='/'>Home</NavLink>
+      <NavLink to="/signup">Sign Up</NavLink>
       <NavLink to='/characters'>Characters</NavLink>
       <NavLink to='/parties'>Parties</NavLink>
     </nav>
