@@ -21,7 +21,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    this.grabData()
+    if(TokenService.hasAuthToken()) this.grabData()
   }
 
   handleDeleteParty = (e, id) => {
@@ -42,8 +42,7 @@ class App extends React.Component {
       return fetch(url, {
         method: "GET",
         headers: {
-        "Authorization": `basic ${TokenService.getAuthToken()}`,
-          //AUTH
+        "Authorization": `${TokenService.getAuthToken()}`,
         }
       })
         .then(res => {
@@ -70,7 +69,7 @@ class App extends React.Component {
       .then(result => result.json())
       .then(data => {
         console.log(data)
-        this.grabData()
+        if(TokenService.hasAuthToken()) this.grabData()
         return data
       })
   }
@@ -80,7 +79,7 @@ class App extends React.Component {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `basic ${TokenService.getAuthToken()}`
+        "Authorization": `${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({name: name})
     }
@@ -93,7 +92,7 @@ class App extends React.Component {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `basic ${TokenService.getAuthToken()}`
+        "Authorization": `${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
         user_email: user_email,
@@ -119,7 +118,7 @@ class App extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `basic ${TokenService.getAuthToken()}`
+        "Authorization": `${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newCharacter)
     }
@@ -133,7 +132,7 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `basic ${TokenService.getAuthToken()}`
+        "Authorization": `${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(editedChar)
     }
@@ -141,7 +140,12 @@ class App extends React.Component {
   }
   grabSingleChar = (id) => {
     console.log(id)
-    fetch(`${config.API_ENDPOINT}/characters/${id}`)
+    fetch(`${config.API_ENDPOINT}/characters/${id}`,{
+      method: "GET",
+      headers: {
+        "Authorization": `${TokenService.getAuthToken()}`
+      }
+    } )
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -157,7 +161,7 @@ class App extends React.Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `basic ${TokenService.getAuthToken()}`
+        "Authorization": `${TokenService.getAuthToken()}`
       }
     }
     this.sendData(`characters/${charId}`, options)
@@ -177,8 +181,11 @@ class App extends React.Component {
       },
       body: JSON.stringify(user)
     }
-    console.log(options)
     this.sendData('auth/login', options)
+      .then(result => {
+        if(!result.authToken) return result
+        return TokenService.saveAuthToken(result.authToken)
+      })
   }
 
   render(props) {
