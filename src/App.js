@@ -69,6 +69,7 @@ class App extends React.Component {
     return fetch(`${config.API_ENDPOINT}/${endpoint}`, options)
       .then(result => result.json())
       .then(data => {
+        console.log(data)
         this.grabData()
         return data
       })
@@ -164,16 +165,17 @@ class App extends React.Component {
   handleLogIn = (e, userCred) => {
     e.preventDefault()
     const {user_email, user_password} = userCred
+    console.log(user_password)
+    const user = {
+        user_email: user_email,
+        user_password: user_password
+    }
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(TokenService
-        .makeBasicAuthToken(
-          user_email,
-          user_password
-        ))
+      body: JSON.stringify(user)
     }
     console.log(options)
     this.sendData('auth/login', options)
