@@ -5,6 +5,8 @@ import Characters from './components/Characters/Characters'
 import Parties from './components/Parties/Parties'
 import config from './config'
 import SignUp from './components/Users/SignUp'
+import LogIn from './components/Users/LogIn'
+import TokenService from './services/token-service'
 
 class App extends React.Component {
   constructor(props) {
@@ -37,10 +39,10 @@ class App extends React.Component {
       `${config.API_ENDPOINT}/parties`,
     ]
     Promise.all(urls.map(url => {
-      console.log(url)
       return fetch(url, {
         method: "GET",
         headers: {
+        "Authorization": `basic ${TokenService.getAuthToken()}`,
           //AUTH
         }
       })
@@ -76,7 +78,8 @@ class App extends React.Component {
     const options = {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({name: name})
     }
@@ -88,7 +91,8 @@ class App extends React.Component {
     const options = {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
         user_email: user_email,
@@ -109,27 +113,12 @@ class App extends React.Component {
         }
       } )
   }
-  //  handleRemoveChar = (e, characterId) => {
-  //    const grabChar = this.state.characters.filter(char => char.char_id === characterId)
-  //    const patchData = {
-  //      party_id: null }
-  //
-  //    const options = {
-  //      method: "PATCH",
-  //      headers: {
-  //        "Content-Type": "application/json"
-  //      },
-  //      body: JSON.stringify(patchData)
-  //    }
-  //    e.preventDefault()
-  //    this.sendData(`characters/${characterId}`, options )
-  //  }
-
   handleSubmitChar = (e, newCharacter) => {
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newCharacter)
     }
@@ -142,13 +131,15 @@ class App extends React.Component {
     const options = {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `basic ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(editedChar)
     }
     this.sendData(`characters/${char_id}`, options)
   }
   grabSingleChar = (id) => {
+    console.log(id)
     fetch(`${config.API_ENDPOINT}/characters/${id}`)
       .then(res => res.json())
       .then(data => {
@@ -164,10 +155,28 @@ class App extends React.Component {
     const options = {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `basic ${TokenService.getAuthToken()}`
       }
     }
     this.sendData(`characters/${charId}`, options)
+  }
+  handleLogIn = (e, userCred) => {
+    e.preventDefault()
+    const {user_email, user_password} = userCred
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(TokenService
+        .makeBasicAuthToken(
+          user_email,
+          user_password
+        ))
+    }
+    console.log(options)
+    this.sendData('auth/login', options)
   }
 
   render(props) {
@@ -178,6 +187,15 @@ class App extends React.Component {
           render={({match, history, location}) => (
             <SignUp
               createUser={this.handleCreateUser}
+              history={history}
+            />
+          )}
+        />
+        <Route
+          path="/login"
+          render={({match, history, location}) => (
+            <LogIn
+              logIn={this.handleLogIn}
               history={history}
             />
           )}
