@@ -14,13 +14,14 @@ class LogIn extends React.Component {
     })
   }
   render(){
+    const submitLogin = (e) => {
+      this.props.logIn(e, this.state)
+    }
     return (
       <div>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
-            this.props.logIn(e, this.state)
-            this.props.history.push('/')
+            submitLogin(e)
           }}
         >
           <label>

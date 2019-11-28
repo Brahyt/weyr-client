@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar'
-import Characters from './components/Characters/Characters'
-import Parties from './components/Parties/Parties'
-import config from './config'
-import SignUp from './components/Users/SignUp'
-import LogIn from './components/Users/LogIn'
-import TokenService from './services/token-service'
+import Navbar from './components/Navbar/Navbar';
+import Characters from './components/Characters/Characters';
+import Parties from './components/Parties/Parties';
+import config from './config';
+import SignUp from './components/Users/SignUp';
+import LogIn from './components/Users/LogIn';
+import TokenService from './services/token-service';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends React.Component {
       stickers: [],
       parties: [],
       party:{},
-      user:{}
+      loggedIn: false,
     }
   }
   componentDidMount() {
@@ -186,12 +186,20 @@ class App extends React.Component {
         if(!result.authToken) return result
         return TokenService.saveAuthToken(result.authToken)
       })
+      .then(() => this.props.history.push('/'))
+      .then(() => this.grabData())
   }
 
   render(props) {
     return (
       <div className="App">
-        <Navbar />
+        <Route path='/'
+          render={({match, history, loctaion}) => (
+            <Navbar
+              history={history}
+            />
+          )}
+        />
         <Route path='/signup' 
           render={({match, history, location}) => (
             <SignUp
