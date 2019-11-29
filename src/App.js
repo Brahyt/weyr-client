@@ -187,7 +187,7 @@ class App extends React.Component {
         return TokenService.saveAuthToken(result.authToken)
       })
       .then(() => this.props.history.push('/'))
-      .then(() => this.grabData())
+      .then(() => TokenService.hasAuthToken() ? this.grabData() : alert('Wrong user or password'))
   }
 
   render(props) {
