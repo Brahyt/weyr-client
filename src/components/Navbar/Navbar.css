@@ -8,7 +8,7 @@ nav .link {
 nav .home {
   font-size: 1.2rem;
 }
-.link {
+.link:link {
   color: var(--blackbrown);
 }
 

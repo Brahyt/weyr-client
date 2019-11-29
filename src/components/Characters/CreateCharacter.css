@@ -1,15 +1,18 @@
 .char-form-container {
   width: 100%;
 }
+
 form {
   padding: 5%;
 }
-input {
+
+select, input {
   display: block;
-}
-select {
-  display: block;
+  color: var(--red);
   margin-bottom: 5%;
+  background-color: var(--brown);
+  border-color: var(--blackbrown);
+  border-radius: 5px;
 }
 
 button {

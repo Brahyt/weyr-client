@@ -3,6 +3,7 @@
   --gold: #fbbc08;
   --blackbrown: #180400;
   --red: #bf1e01;
+  --brown: #3c0b00;
 }
 h1,h2,h3,h4,h5,h6,p,label,input,button {
   color: var(--red);
