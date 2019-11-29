@@ -1,0 +1,10 @@
+nav {
+  background-color: var(--gold);
+  padding: 1rem;
+}
+nav .link {
+  margin: 3%;
+}
+nav .home {
+  font-size: 1.2rem;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom'
+import './Navbar.css'
 import TokenService from '../../services/token-service'
 
 function Navbar(props) {
@@ -11,20 +12,18 @@ function Navbar(props) {
   if (TokenService.hasAuthToken()) {
     return (
     <nav>
-      <Link
-        to="/"
-        onClick={logout}
-      >Log Out</Link>
-      <NavLink to='/characters'>Characters</NavLink>
-      <NavLink to='/parties'>Parties</NavLink>
+      <NavLink className='link home' to='/'>Home</NavLink>
+      <NavLink className="link" to='/characters'>Characters</NavLink>
+      <NavLink className="link" to='/parties'>Parties</NavLink>
+      <Link className="link right" to="/" onClick={logout}>Log Out</Link>
     </nav>
     )
     } else {
       return (
         <nav>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-          <NavLink to="/login">Log In</NavLink>
+          <NavLink className='link home' to='/'>Home</NavLink>
+          <NavLink className='link right' to="/signup">Sign Up</NavLink>
+          <NavLink className='link right' to="/login">Log In</NavLink>
         </nav>
       )
     }

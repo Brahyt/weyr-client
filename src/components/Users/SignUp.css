@@ -1,0 +1,13 @@
+form {
+  width: 75%;
+  display: block;
+  padding: 5%;
+  margin: 0 auto 0 auto;
+}
+input {
+  margin-bottom: 5%;
+  display: block;
+}
+.form-container {
+  width: 100%;
+}

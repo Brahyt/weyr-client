@@ -1,4 +1,5 @@
 import React from 'react';
+import './SignUp.css'
 
 class SignUp extends React.Component {
   constructor(props){
@@ -6,6 +7,7 @@ class SignUp extends React.Component {
     this.state = {
       user_email: '',
       user_password: '',
+      password_confirm: '',
     }
   }
   handleChange = (e) => {
@@ -24,7 +26,7 @@ class SignUp extends React.Component {
           }}
         >
           <label>
-            Email:
+            User Name:
             <input 
               name="user_email"
               type="text"
@@ -38,6 +40,15 @@ class SignUp extends React.Component {
               name="user_password"
               type="password"
               value={this.state.user_password}
+              onChange={(e) => this.handleChange(e)}
+            />
+          </label>
+          <label>
+            Confirm Password:
+            <input
+              name="password_confirm"
+              type="password"
+              value={this.state.password_confirm}
               onChange={(e) => this.handleChange(e)}
             />
           </label>
