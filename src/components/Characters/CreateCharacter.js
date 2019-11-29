@@ -1,4 +1,5 @@
 import React from 'react';
+import './CreateCharacter.css'
 
 class CreateCharacter extends React.Component {
   constructor(props){
@@ -35,9 +36,13 @@ class CreateCharacter extends React.Component {
   handleSubmit(event){
     event.preventDefault();
   }
+  cancel(e){
+    e.preventDefault();
+    this.props.history.push('/characters')
+  }
   render() {
     return (
-      <div>
+      <div className="char-form-container">
         <form
           onSubmit={(e) => {
             this.props.handleSubmitChar(e, this.state)
@@ -257,8 +262,10 @@ class CreateCharacter extends React.Component {
               })}
             </select>
           </label>
+          <button>Create</button>
           <button
-          >Create</button>
+            onClick={(e) => this.cancel(e)}
+          >Cancel</button>
         </form>
       </div>
     );

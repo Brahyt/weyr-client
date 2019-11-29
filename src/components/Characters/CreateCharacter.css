@@ -1,0 +1,17 @@
+.char-form-container {
+  width: 100%;
+}
+form {
+  padding: 5%;
+}
+input {
+  display: block;
+}
+select {
+  display: block;
+  margin-bottom: 5%;
+}
+
+button {
+  margin-right: 5%;
+}

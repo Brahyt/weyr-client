@@ -7,7 +7,7 @@ function EachParty(props) {
   })
   return (
     <div>
-      {props.name}
+      <h3>{props.name}</h3>
       <button
         onClick={(e) => props.deleteParty(e, props.party_id)}
       >Delete</button>
