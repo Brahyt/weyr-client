@@ -15,7 +15,7 @@ a:link {
   decoration: none;
 }
 a:visited {
-  color: var(--darkbrown);
+  color: var(--gold);
 }
 a:hover {
   color: var(--red);

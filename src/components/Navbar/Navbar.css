@@ -8,3 +8,14 @@ nav .link {
 nav .home {
   font-size: 1.2rem;
 }
+.link {
+  color: var(--blackbrown);
+}
+
+.link:visited {
+  color: var(--blackbrown);
+}
+
+.link:hover {
+  color: var(--red);
+}
