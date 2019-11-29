@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
-import { Route } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom'
+import './Characters.css'
 import CharacterList from './CharacterList'
 import CreateCharacter from './CreateCharacter'
 import CharacterDetails from './CharacterDetails'
@@ -9,17 +9,10 @@ import EditCharacter from './EditCharacter'
 class Characters extends React.Component {
   render() {
     return (
-      <div>
+      <section className="character-container">
         <h1>Characters</h1>
         <NavLink to="/characters/create">Create</NavLink>
-        <Route
-          exact path="/characters/:id"
-          render={({match, history, location}) => (
-            <CharacterDetails
-              character={this.props.character}
-            />
-          )}
-        />
+        <Switch>
         <Route
           exact path="/characters/edit"
           render={({match, history, location}) => (
@@ -35,13 +28,21 @@ class Characters extends React.Component {
           )}
         />
         <Route
-          path="/characters/create"
+          exact path="/characters/create"
           render={({match, history, location})=>(
             <CreateCharacter
               stickers={this.props.stickers}
               parties={this.props.parties}
               handleSubmitChar={this.props.handleSubmitChar}
               history={history}
+            />
+          )}
+        />
+        <Route
+          exact path="/characters/:id"
+          render={({match, history, location}) => (
+            <CharacterDetails
+              character={this.props.character}
             />
           )}
         />
@@ -53,7 +54,11 @@ class Characters extends React.Component {
           stickers={this.props.stickers}
         />
         </Route>
-      </div>
+
+
+        </Switch>
+      </section>
+
     )
   }
 }

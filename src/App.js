@@ -169,6 +169,7 @@ class App extends React.Component {
       }
     }
     this.sendData(`characters/${charId}`, options)
+    this.props.history.push('/characters')
   }
   handleLogIn = (e, userCred) => {
     e.preventDefault()

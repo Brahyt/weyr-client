@@ -9,9 +9,9 @@ class CreateCharacter extends React.Component {
       race: 'Human',
       char_class: 'Arcane',
       sub_class: 'Wizard',
-      xp: '',
-      hand_size: '',
-      health: '',
+      xp: '0',
+      hand_size: '0',
+      health: '0',
       party_id: '0',
       user_id: '1',
       sticker_1_id: '1',
@@ -20,10 +20,10 @@ class CreateCharacter extends React.Component {
       sticker_4_id: '1',
       sticker_5_id: '1',
       sticker_6_id: '1',
-      arcane: '',
-      deception: '',
-      martial: '',
-      devotion: ''
+      arcane: '0',
+      deception: '0',
+      martial: '0',
+      devotion: '0'
     }
   }
   handleChange(event){
@@ -41,6 +41,7 @@ class CreateCharacter extends React.Component {
     this.props.history.push('/characters')
   }
   render() {
+    const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     return (
       <div className="char-form-container">
         <form
@@ -101,32 +102,43 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             XP:
-            <input
+            <select
               id="xp"
               name="xp"
-              type="number"
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Hand Size:
-            <input 
+            <select
               id="hand_size" 
               name="hand_size"
-              type="number" 
               value={this.state.hand_size}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            
+            </select>
           </label>
           <label>
             Health:
-            <input
+            <select
               id="health"
               name="health"
-              type="number"
               value={this.state.health}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Party:
@@ -146,47 +158,61 @@ class CreateCharacter extends React.Component {
           </label>
           <label>
             Arcane:
-            <input
+            <select
               id="arcane"
               name="arcane"
-              type="number"
               value={this.state.arcane}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Deception:
-            <input 
+            <select
               id="deception" 
               name="deception"
-              type="number" 
               value={this.state.deception}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Martial:
-            <input 
+            <select 
               id="martial"
               name="martial"
-              type="number"
               value={this.state.martial}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Devotion:
-            <input 
+            <select 
               id="devotion" 
               name="devotion"
-              type="number" 
               value={this.state.devotion}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Sticker 1:
-            <select 
+            <select
               id="sticker_1_id"
               name="sticker_1_id"
               value={this.state.sticker_1_id}
