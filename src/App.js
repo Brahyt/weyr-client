@@ -30,6 +30,9 @@ class App extends React.Component {
     console.log(id)
     const options = {
       method: "DELETE",
+      headers: {
+        "Authorization": `${TokenService.getAuthToken()}`
+      }
     }
     this.sendData(`/parties/${id}`, options)
   }
