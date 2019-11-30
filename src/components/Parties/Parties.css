@@ -1,0 +1,14 @@
+.parties {
+  width: 100%;
+  text-align: center;
+}
+
+.parties h1 {
+  font-family: var(--bigfont);
+  margin: 2% 0 0 0;
+}
+
+.parties-list {
+  width: 100%;
+  text-align: left;
+}

@@ -30,6 +30,7 @@ select:hover, input:hover {
 }
 
 
-button {
-  margin-right: 5%;
+.char-form-container button {
+  width: 40%;
+  margin: 0 5% 0 5%;
 }

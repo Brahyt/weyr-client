@@ -1,17 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya+SC|Eczar&display=swap');
 :root {
   --darkbrown: #3c0b00;
   --gold: #fbbc08;
+  --dgold: #c2930e;
   --blackbrown: #180400;
   --red: #bf1e01;
   --brown: #3c0b00;
+  --bigfont: 'Alegreya SC', serif;
+  --smallfont: 'Eczar', serif;
 }
-h1,h2,h3,h4,h5,h6,p,label,input,button {
+h1,h2,h3,h4,h5,h6,p,label,input {
+  font-family: var(--smallfont);
   color: var(--red);
 }
+html, body, .App {
+  width: 100%;
+}
+
 body {
   background-color: var(--blackbrown);
 }
 
+button {
+  height: 1.5rem;
+  color: var(--blackbrown);
+  background-color: var(--gold);
+  border-color: var(--brown);
+}
+
+button:hover {
+  background-color: var(--dgold);
+}
 
 a:link {
   text-decoration: none;

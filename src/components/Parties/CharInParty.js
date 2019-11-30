@@ -1,14 +1,18 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
+import './CharInParty.css'
 
 function CharInParty(props) {
   console.log(props)
   return (
-    <div>
-      <h4>{props.name}</h4>
-      <h5>{props.class} - {props.sub_class}</h5>
-      <h6>Xp: {props.xp}</h6>
-      <h6>Health: {props.health}</h6>
-    </div>
+    <NavLink to={`characters/${props.id}`}>
+      <div className="each-char-in-party">
+        <h3>{props.name}</h3>
+        <p>{props.class} - {props.sub_class}</p>
+        <p>Xp: {props.xp}</p>
+        <p>Health: {props.health}</p>
+      </div>
+    </NavLink>
   );
 }
 

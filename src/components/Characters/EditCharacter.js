@@ -45,6 +45,7 @@ class EditCharacter extends React.Component {
     return (
       <div>
         <form
+          className="char-edit-form"
           onSubmit={(e) => {
             e.preventDefault()
             this.props.editChar(e, this.state)  //<HERE, changing to edit

@@ -2,3 +2,12 @@
   width: 100%;
   text-align: center;
 }
+
+.character-container h1 {
+  margin: 2% 0 0 0;
+}
+
+section h1 {
+  font-family: var(--bigfont);
+  font-size: 2rem;
+}

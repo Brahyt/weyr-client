@@ -1,0 +1,21 @@
+.party-list {
+  width: 100%;
+  padding: 5%;
+}
+
+.party-list h3 {
+  display: inline;
+}
+
+.party-list button {
+  margin-left: 5%;
+  padding: 0 1% 0 1%;
+  width: auto;
+}
+
+.char-in-party {
+  padding-left: 5%;
+  margin-top: 5%;
+  display: flex;
+  width: 100%;
+}

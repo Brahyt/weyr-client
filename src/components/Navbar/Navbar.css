@@ -1,9 +1,11 @@
 nav {
+  text-align: center;
   background-color: var(--gold);
   padding: 1rem;
 }
 nav .link {
-  margin: 3%;
+  margin: 2%;
+  font-family: var(--bigfont);
 }
 nav .home {
   font-size: 1.2rem;
