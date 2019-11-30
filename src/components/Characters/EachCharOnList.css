@@ -1,0 +1,12 @@
+.each-char {
+  width: 100%;
+  padding: 0 5% 2% 5%;
+  text-align: left;
+}
+.each-char h3 {
+  display: block;
+}
+
+.stats {
+  column-count: 2;
+}

@@ -41,6 +41,7 @@ class EditCharacter extends React.Component {
     event.preventDefault();
   }
   render() {
+    const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     return (
       <div>
         <form
@@ -102,32 +103,43 @@ class EditCharacter extends React.Component {
           </label>
           <label>
             XP:
-            <input
-              id= "xp"
-              name= "xp"
-              type="number"
+            <select
+              id="xp"
+              name="xp"
+              value={this.state.xp}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Hand Size:
-            <input
-              id="hand_size"
+            <select
+              id="hand_size" 
               name="hand_size"
-              type="number"
               value={this.state.hand_size}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Health:
-            <input 
+            <select
               id="health"
               name="health"
-              type="number"
               value={this.state.health}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Party:
@@ -145,43 +157,57 @@ class EditCharacter extends React.Component {
           </label>
           <label>
             Arcane:
-            <input
+            <select
               id="arcane"
               name="arcane"
-              type="number"
               value={this.state.arcane}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Deception:
-            <input 
+            <select
               id="deception" 
               name="deception"
-              type="number" 
               value={this.state.deception}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+
+            </select>
           </label>
           <label>
             Martial:
-            <input 
+            <select 
               id="martial"
               name="martial"
-              type="number"
               value={this.state.martial}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Devotion:
-            <input 
+            <select 
               id="devotion" 
               name="devotion"
-              type="number" 
               value={this.state.devotion}
               onChange={(e) => this.handleChange(e)}
-            />
+            >
+              {selectNum.map(num => {
+                return <option value={num}>{num}</option>
+              })}
+            </select>
           </label>
           <label>
             Sticker 1:
