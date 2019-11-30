@@ -92,6 +92,7 @@ class App extends React.Component {
   handleCreateUser = (e, user) => {
     e.preventDefault()
     const {user_email, user_password} = user
+    if(!user_email) return alert("Please provide a username.")
     const options = {
       method: 'POST',
       headers: {
