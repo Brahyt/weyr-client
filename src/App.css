@@ -43,3 +43,10 @@ a:visited {
 a:hover {
   color: var(--red);
 }
+@media only screen and (min-width: 700px) {
+  .App {
+    width: 700px;
+    margin: 0 auto;
+  }
+
+}

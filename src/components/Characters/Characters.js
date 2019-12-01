@@ -54,8 +54,6 @@ class Characters extends React.Component {
           stickers={this.props.stickers}
         />
         </Route>
-
-
         </Switch>
       </section>
 

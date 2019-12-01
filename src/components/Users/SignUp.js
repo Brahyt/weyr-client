@@ -40,7 +40,7 @@ class SignUp extends React.Component {
   }
   render(){
     return (
-      <div>
+      <div className="create-char">
         <form
           onSubmit={(e) => {
             e.preventDefault()

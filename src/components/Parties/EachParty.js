@@ -35,4 +35,3 @@ function EachParty(props) {
 }
 
 export default EachParty;
-

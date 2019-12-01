@@ -6,7 +6,7 @@ function CharInParty(props) {
   return (
     <NavLink to={`characters/${props.id}`}>
       <div className="each-char-in-party">
-        <div className="name">
+        <div className="party-name">
           <h3>{props.name}</h3>
         </div>
         <p>{props.class} - {props.sub_class}</p>

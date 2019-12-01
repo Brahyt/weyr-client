@@ -5,7 +5,7 @@ import './EachCharOnList.css'
 function EachCharOnList (props) {
   const char = props.charProps
     return (
-      <Link 
+      <Link
         to={`/characters/${char.char_id}`}
         onClick={() => props.linkToChar(char.char_id)}
       >

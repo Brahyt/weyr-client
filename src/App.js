@@ -192,7 +192,8 @@ class App extends React.Component {
 
   render(props) {
     return (
-      <div className="App">
+      <>
+      <header>
         <Route path='/'
           render={({match, history, loctaion}) => (
             <Navbar
@@ -200,6 +201,8 @@ class App extends React.Component {
             />
           )}
         />
+      </header>
+      <div className="App">
         <Route path='/signup' 
           render={({match, history, location}) => (
             <SignUp
@@ -251,6 +254,7 @@ class App extends React.Component {
             />
           )}/>
       </div>
+    </>
     );
   }
 }
