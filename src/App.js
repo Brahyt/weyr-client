@@ -27,7 +27,6 @@ class App extends React.Component {
 
   handleDeleteParty = (e, id) => {
     e.preventDefault()
-    console.log(id)
     const options = {
       method: "DELETE",
       headers: {
@@ -72,7 +71,6 @@ class App extends React.Component {
     return fetch(`${config.API_ENDPOINT}/${endpoint}`, options)
       .then(result => result.json())
       .then(data => {
-        console.log(data)
         if(TokenService.hasAuthToken()) this.grabData()
         return data
       })
@@ -92,7 +90,6 @@ class App extends React.Component {
   handleCreateUser = (e, user) => {
     e.preventDefault()
     const {user_email, user_password} = user
-    if(!user_email) return alert("Please provide a username.")
     const options = {
       method: 'POST',
       headers: {
@@ -144,7 +141,6 @@ class App extends React.Component {
     this.sendData(`characters/${char_id}`, options)
   }
   grabSingleChar = (id) => {
-    console.log(id)
     fetch(`${config.API_ENDPOINT}/characters/${id}`,{
       method: "GET",
       headers: {
@@ -161,7 +157,6 @@ class App extends React.Component {
   }
   handleDeleteChar = (e, charId) => {
     e.preventDefault()
-    console.log(charId)
     const options = {
       method: "DELETE",
       headers: {
@@ -175,7 +170,6 @@ class App extends React.Component {
   handleLogIn = (e, userCred) => {
     e.preventDefault()
     const {user_email, user_password} = userCred
-    console.log(user_password)
     const user = {
         user_email: user_email,
         user_password: user_password

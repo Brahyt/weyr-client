@@ -7,14 +7,16 @@ function EachParty(props) {
     return char.party_id === props.party_id
   })
   return (
-    <div className="party-list">
-      <h3>{props.name}</h3>
-      <button
-        onClick={(e) => props.deleteParty(e, props.party_id)}
-      >Delete</button>
+    <div key={props.party_id} className="party-list">
+      <div className="party-header">
+        <h3>{props.name}</h3>
+        <button
+          onClick={(e) => props.deleteParty(e, props.party_id)}
+        >Delete</button>
+      </div>
         {charactersInParty.map(char => {
           return(
-        <div className="char-in-party">
+        <div key={char.char_id} className="char-in-party">
           <CharInParty
             key={char.char_id}
             id={char.char_id}

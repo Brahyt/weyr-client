@@ -4,12 +4,13 @@
   --gold: #fbbc08;
   --dgold: #c2930e;
   --blackbrown: #180400;
-  --red: #bf1e01;
+  --red: #ff4040;
+  /*--red: #bf1e01;*/
   --brown: #3c0b00;
   --bigfont: 'Alegreya SC', serif;
   --smallfont: 'Eczar', serif;
 }
-h1,h2,h3,h4,h5,h6,p,label,input {
+h1,h2,h3,h4,h5,h6,p,label,input, a {
   font-family: var(--smallfont);
   color: var(--red);
 }

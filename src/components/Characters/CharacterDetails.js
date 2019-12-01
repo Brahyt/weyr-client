@@ -5,27 +5,30 @@ import './CharacterDetails.css';
 function CharacterDetails(props) {
   const {character} = props
   const {equipment, stickers} = props.character
-  console.log(character)
   return (
-    <div>
+    <div className="char-details-page">
       <h2>{character.name}</h2>
-      <h3>{character.char_class} - {character.sub_class}</h3>
+      <h4>{character.char_class} - {character.sub_class}</h4>
       <div className="details">
-        <p>Health: {character.health}</p>
-        <p>XP: {character.xp}</p>
-        <p>Hand Size: {character.hand_size}</p>
-        <p>Arcane: {equipment? equipment.arcane : ''}</p>
-        <p>Deception: {equipment ? equipment.deception : ''}</p>
-        <p>Martial: {equipment ? equipment.martial : ''}</p>
-        <p>Devotion: {equipment ? equipment.devotion : ''}</p>
+        <p>Health: <em>{character.health}</em></p>
+        <p>XP: <em>{character.xp}</em></p>
+        <p>Hand Size: <em>{character.hand_size}</em></p>
+      </div>
+        <h3>Equipment</h3>
+        <div className="equipment">
+          <p>Arcane: {equipment? equipment.arcane : ''}</p>
+          <p>Deception: {equipment ? equipment.deception : ''}</p>
+          <p>Martial: {equipment ? equipment.martial : ''}</p>
+          <p>Devotion: {equipment ? equipment.devotion : ''}</p>
       </div>
       <div className='stickers'>
+      <h3>Stickers</h3>
         {!stickers ? "" : stickers.map(sticker => {
           return (
             <>
               <h4>{sticker.title}</h4>
               <p>{sticker.description}</p>
-              <p>Cost: {sticker.cost}</p>
+              <p>Cost: <em>{sticker.cost}</em></p>
             </>
           )
         })}

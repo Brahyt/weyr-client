@@ -1,17 +1,29 @@
 .each-char {
+  box-sizing: border-box;
   width: 100%;
   padding: 0 5% 2% 5%;
   text-align: left;
+  background-color: var(--darkbrown);
 }
 .each-char h3 {
   font-family: var(--bigfont);
   font-size: 1.5rem;
   display: block;
+  border-bottom: 1px solid var(--dgold);
 }
 
-.stats {
-  column-count: 2;
+.class-race, .class-stats {
+  display: flex;
+  justify-content: space-around;
 }
+.class-race p, .class-stats p{
+  font-size: 1.1rem;
+  display: inline;
+}
+.class-race em, .class-stats em{
+  font-size: 1rem;
+}
+
 
 .char-edit-form button {
   width: 40%;

@@ -28,7 +28,6 @@ class CreateCharacter extends React.Component {
   }
   handleChange(event){
     const target = event.target.name
-    console.log(target, event.target.value)
     this.setState({
       [target]: event.target.value
     })

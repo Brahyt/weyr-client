@@ -1,6 +1,9 @@
 .party-list {
+  box-sizing: border-box;
+  background-color: var(--darkbrown);
   width: 100%;
   padding: 5%;
+  margin: 5% 5% 5% 0;
 }
 
 .party-list h3 {
@@ -13,9 +16,12 @@
   width: auto;
 }
 
+.party-header {
+  border-bottom: 1px solid var(--dgold);
+}
+
 .char-in-party {
   padding-left: 5%;
   margin-top: 5%;
-  display: flex;
   width: 100%;
 }

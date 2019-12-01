@@ -4,7 +4,6 @@ import './EachCharOnList.css'
 
 function EachCharOnList (props) {
   const char = props.charProps
-  console.log(char)
     return (
       <Link 
         to={`/characters/${char.char_id}`}
@@ -14,13 +13,13 @@ function EachCharOnList (props) {
         <h3>{char.name}</h3>
         <div className="stats">
           <div className="class-race">
-            <p>Class: {char.char_class} - {char.sub_class}</p>
-            <p>Race: {char.race}</p>
+            <p>Class: <em>{char.char_class} - {char.sub_class}</em></p>
+            <p>Race: <em>{char.race}</em></p>
           </div>
           <div className="class-stats">
-            <p>Health: {char.health}</p>
-            <p>XP: {char.xp}</p>
-            <p>Hand Size: {char.hand_size}</p>
+            <p>Health: <em>{char.health}</em></p>
+            <p>XP: <em>{char.xp}</em></p>
+            <p>Hand Size: <em>{char.hand_size}</em></p>
           </div>
         </div>
       </div>

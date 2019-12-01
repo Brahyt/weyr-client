@@ -49,7 +49,7 @@ class SignUp extends React.Component {
         >
           <label>
             User Name:
-            <input 
+            <input
               name="user_email"
               type="text"
               value={this.state.user_email}

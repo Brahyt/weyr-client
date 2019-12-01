@@ -1,7 +1,12 @@
 .each-char-in-party {
   width: 100%;
+  border: 1px solid black;
 }
 
 .each-char-in-party p {
   margin: 1% 0 0 3%;
+}
+
+.party-name {
+  border-bottom: 1px solid var(--dgold);
 }
