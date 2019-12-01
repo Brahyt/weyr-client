@@ -243,7 +243,7 @@ class App extends React.Component {
           render={({match, history, location}) => (
             <Parties
               match={match}
-              hostory={history}
+              history={history}
               location={location}
               parties={this.state.parties}
               party={this.state.party}

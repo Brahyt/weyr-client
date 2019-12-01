@@ -42,7 +42,9 @@ class Characters extends React.Component {
           exact path="/characters/:id"
           render={({match, history, location}) => (
             <CharacterDetails
+              match={match}
               character={this.props.character}
+              linkToChar={this.props.linkToChar}
             />
           )}
         />

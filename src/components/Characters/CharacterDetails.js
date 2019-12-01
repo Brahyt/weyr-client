@@ -2,9 +2,18 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './CharacterDetails.css';
 
-function CharacterDetails(props) {
-  const {character} = props
-  const {equipment, stickers} = props.character
+class CharacterDetails extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+  componentDidMount(){
+    this.props.linkToChar(this.props.match.params.id)
+  }
+
+  render(){
+  const {character} = this.props
+  const {equipment, stickers} = this.props.character
   return (
     <div className="char-details-page">
       <h2>{character.name}</h2>
@@ -37,6 +46,7 @@ function CharacterDetails(props) {
     </div>
 
   );
+  }
 }
 
 export default CharacterDetails;

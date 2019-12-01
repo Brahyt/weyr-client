@@ -13,6 +13,7 @@ function PartiesList(props) {
             characters={props.characters}
             removeChar={props.removeChar}
             deleteParty={props.deleteParty}
+            match={props.match}
           />
         )
       })}
