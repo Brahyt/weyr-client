@@ -1,0 +1,14 @@
+.dragon {
+  width: 90%;
+  margin: 5%;
+}
+
+p {
+  margin: 5% 10% 5% 10%;
+}
+
+@media only screen and (min-width: 700px) {
+  .dragon { 
+    width: 700px;
+  }
+}

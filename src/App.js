@@ -7,6 +7,7 @@ import Parties from './components/Parties/Parties';
 import config from './config';
 import SignUp from './components/Users/SignUp';
 import LogIn from './components/Users/LogIn';
+import Splash from './components/Splash/Splash'
 import TokenService from './services/token-service';
 
 class App extends React.Component {
@@ -253,6 +254,16 @@ class App extends React.Component {
               deleteParty={this.handleDeleteParty}
             />
           )}/>
+        <Route
+          exact path='/'
+          render={({match, history, location}) => (
+            <Splash
+              history={history}
+              match={match}
+              location={location}
+            />
+          )}
+        />
       </div>
     </>
     );
