@@ -9,6 +9,11 @@ Sign up or Log in to a user Account.  Once logged in you first create a party yo
 ## Technology
 Javascript, HTML, CSS, React library
 
+## Screenshots
+![](https://i.imgur.com/6504IGX.png)
+![](https://i.imgur.com/W9svvZd.png)
+![](https://i.imgur.com/kSrX9rA.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
