@@ -7,6 +7,7 @@ function Splash () {
     <div className="splash-page">
       <img className="dragon" src={dragon}/>
       <p className="opener">A <b>party builder</b> and <b>quest tracker</b> for the <em>D&D</em> Inspired <b>DragonFire</b> board game.  Sign up, Create a party and populate it with your heros.</p>
+      <p>Demo user - Login: dragon Password: demodragon</p>
       <p>Requests for new feaures <a href="mailto: weyralliance@gmail.com">HERE</a></p>
     </div>
   )

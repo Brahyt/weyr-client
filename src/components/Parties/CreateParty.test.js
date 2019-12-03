@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CharInParty from './CharInParty';
-import { BrowserRouter } from 'react-router-dom';
+import CreateParty from './CharInParty';
 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-    <BrowserRouter><CharInParty /></BrowserRouter>
+    <CreateParty />
     , div);
   ReactDOM.unmountComponentAtNode(div);
 });
