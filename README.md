@@ -1,4 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Weyr-Alliance
+https://weyr-alliance.com/
+## Description:
+A party builder and quest tracker for the D&D Inspired DragonFire board game.  Manage your characters and parties used in your quest. You can update and delete your characters and parties as needed.
+
+## Instructions
+Sign up or Log in to a user Account.  Once logged in you first create a party you wish to populate and then you may create characters to fill that party.  Once you save the party you may update, delete or swap any of the characters as your game progresses.
+
+## Technology
+Javascript, HTML, CSS, React library
 
 ## Available Scripts
 
@@ -66,3 +75,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
