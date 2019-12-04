@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Adapter from 'enzyme-adapter-react-16';
+import { BrowserRouter } from 'react-router-dom';
 import Characters from './Characters';
-import {BrowserRouter} from 'react-router-dom'
+import {shallow} from 'enzyme';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<BrowserRouter><Characters /></BrowserRouter>, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const wrapper = shallow(<Characters />)
 });
