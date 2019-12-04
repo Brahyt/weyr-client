@@ -6,7 +6,7 @@ import './Parties.css'
 
 function Parties(props) {
   return (
-    <div className="parties">
+    <div className="parties" data-test="parties">
       <h1>Your Parties</h1>
       <NavLink to="/parties/create">
         Create

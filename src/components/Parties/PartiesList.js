@@ -3,7 +3,7 @@ import EachParty from './EachParty'
 
 function PartiesList(props) {
   return (
-    <div>
+    <div data-test="parties-list">
       {props.parties.map(party => {
         return(
           <EachParty

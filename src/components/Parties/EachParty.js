@@ -7,7 +7,7 @@ function EachParty(props) {
     return char.party_id === props.party_id
   })
   return (
-    <div key={props.party_id} className="party-list">
+    <div data-test="each-party" key={props.party_id} className="party-list">
       <div className="party-header">
         <h3>{props.name}</h3>
         <button
