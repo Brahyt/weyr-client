@@ -14,7 +14,7 @@ class CreateParty extends React.Component {
   }
   render(){
     return (
-      <div>
+      <div data-test="create-party">
         <form
           onSubmit={(e) => {
             this.props.createParty(e, this.state.name)

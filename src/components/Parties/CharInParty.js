@@ -5,7 +5,7 @@ import './CharInParty.css'
 function CharInParty(props) {
   return (
     <NavLink to={`characters/${props.id}`}>
-      <div className="each-char-in-party">
+      <div className="each-char-in-party" data-test="char-in-party">
         <div className="party-name">
           <h3>{props.name}</h3>
         </div>
