@@ -9,7 +9,7 @@ function EachCharOnList (props) {
         to={`/characters/${char.char_id}`}
         onClick={() => props.linkToChar(char.char_id)}
       >
-      <div className="each-char">
+      <div className="each-char" data-test="each-char">
         <h3>{char.name}</h3>
         <div className="stats">
           <div className="class-race">
