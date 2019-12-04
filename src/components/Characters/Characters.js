@@ -10,7 +10,7 @@ class Characters extends React.Component {
   render() {
     return (
       <section className="character-container">
-        <h1>Characters</h1>
+        <h1 data-test='title'>Characters</h1>
         <NavLink to="/characters/create">Create</NavLink>
         <Switch>
         <Route

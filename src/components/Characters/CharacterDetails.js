@@ -15,7 +15,7 @@ class CharacterDetails extends React.Component {
   const {character} = this.props
   const {equipment, stickers} = this.props.character
   return (
-    <div className="char-details-page">
+    <div className="char-details-page" data-test="char-details-page">
       <h2>{character.name}</h2>
       <h4>{character.char_class} - {character.sub_class}</h4>
       <div className="details">

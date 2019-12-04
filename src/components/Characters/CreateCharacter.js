@@ -42,7 +42,7 @@ class CreateCharacter extends React.Component {
   render() {
     const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     return (
-      <div className="char-form-container">
+      <div className="char-form-container" data-test="char-form-container">
         <form
           onSubmit={(e) => {
             this.props.handleSubmitChar(e, this.state)
@@ -107,7 +107,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
@@ -120,7 +120,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             
             </select>
@@ -134,7 +134,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -164,7 +164,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -178,7 +178,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -192,7 +192,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
@@ -205,7 +205,7 @@ class CreateCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
