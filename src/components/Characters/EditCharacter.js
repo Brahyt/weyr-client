@@ -43,7 +43,7 @@ class EditCharacter extends React.Component {
   render() {
     const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     return (
-      <div>
+      <div data-test="edit-char">
         <form
           className="char-edit-form"
           onSubmit={(e) => {
@@ -111,7 +111,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
@@ -124,7 +124,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
@@ -137,7 +137,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -165,7 +165,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -179,7 +179,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
 
             </select>
@@ -193,7 +193,7 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
@@ -206,13 +206,13 @@ class EditCharacter extends React.Component {
               onChange={(e) => this.handleChange(e)}
             >
               {selectNum.map(num => {
-                return <option value={num}>{num}</option>
+                return <option key={num} value={num}>{num}</option>
               })}
             </select>
           </label>
           <label>
             Sticker 1:
-            <select 
+            <select
               id="sticker_1_id"
               name="sticker_1_id"
               value={this.state.sticker_1_id}
