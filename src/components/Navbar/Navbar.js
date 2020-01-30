@@ -13,8 +13,8 @@ function Navbar(props) {
     return (
     <nav>
       <NavLink className='link home' to='/'>Home</NavLink>
-      <NavLink className="link" to='/characters'>Characters</NavLink>
-      <NavLink className="link" to='/parties'>Parties</NavLink>
+      <NavLink className="link char-link" to='/characters' onClick={() => props.takeStep()}>Characters</NavLink>
+      <NavLink className="link party-link" to='/parties' onClick={() => props.takeStep()}>Parties</NavLink>
       <Link className="link right" to="/" onClick={logout}>Log Out</Link>
     </nav>
     )

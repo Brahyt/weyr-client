@@ -9,6 +9,7 @@ import SignUp from './components/Users/SignUp';
 import LogIn from './components/Users/LogIn';
 import Splash from './components/Splash/Splash'
 import TokenService from './services/token-service';
+import Joyride from 'react-joyride';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,39 @@ class App extends React.Component {
       parties: [],
       party:{},
       loggedIn: false,
+      stepIndex: 0,
+      steps: [
+        {
+          target: '.party-link',
+          content: 'First, create a party.',
+          event: 'hover',
+        },
+        {
+          target: '.party-create',
+          content: 'Create your first party.',
+          event: 'hover',
+        },
+        {
+          target: '.create-button',
+          content: 'Enter your Party name and click to create your party',
+          event: 'hover',
+        },
+        {
+          target: '.char-link',
+          content: 'Now, Take a look at the charactors to add to your party',
+          event: 'hover',
+        },
+        {
+          target: '.create-character',
+          content: 'Looks like you dont have any characters yet, so lets create one.',
+          event: 'hover',
+        },
+        {
+          target: '.create-char-button',
+          content: 'Create your Character!',
+          event: 'hover',
+        }
+      ]
     }
   }
   componentDidMount() {
@@ -190,15 +224,47 @@ class App extends React.Component {
       .then(() => this.props.history.push('/'))
       .then(() => TokenService.hasAuthToken() ? this.grabData() : alert('Wrong user or password'))
   }
+  changeStepIndex = () => {
+    const stepIndex = this.state.stepIndex + 1
+    this.setState({
+      stepIndex,
+    })
+  }
+  joyRide = () => {
+    const {steps, stepIndex} = this.state
+    return (
+        <div>
+          <Joyride
+            steps={steps}
+            spotlightClicks={true}
+            stepIndex={stepIndex}
+            styles={{
+              options: {
+                arrowColor: '#fbbc08',
+                backgroundColor: '#fbbc08',
+                height: 100,
+              },
+              tooltip: {
+                fontSize: 20,
+                fontFamily: 'serif',
+              }
+            }}
+          />
+        </div>
+    )
+  }
 
   render(props) {
+    console.log(this.state)
     return (
       <>
+        {!this.state.characters.length ? this.joyRide() : null }
       <header>
         <Route path='/'
           render={({match, history, loctaion}) => (
             <Navbar
               history={history}
+              takeStep={this.changeStepIndex}
             />
           )}
         />
@@ -236,6 +302,7 @@ class App extends React.Component {
               handleSubmitChar={this.handleSubmitChar}
               editChar={this.handleEditChar}
               deleteChar={this.handleDeleteChar}
+              takeStep={this.changeStepIndex}
             />
           )}
         />
@@ -252,6 +319,7 @@ class App extends React.Component {
               removeChar={this.handleRemoveChar}
               createParty={this.createParty}
               deleteParty={this.handleDeleteParty}
+              takeStep={this.changeStepIndex}
             />
           )}/>
         <Route

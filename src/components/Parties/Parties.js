@@ -8,7 +8,7 @@ function Parties(props) {
   return (
     <div className="parties" data-test="parties">
       <h1>Your Parties</h1>
-      <NavLink to="/parties/create">
+      <NavLink class="party-create" to="/parties/create" onClick={() => props.takeStep()}>
         Create
       </NavLink>
         <div className="parties-list">
@@ -16,6 +16,7 @@ function Parties(props) {
           exact path='/parties/create'
           render={({location, match, history}) => (
             <CreateParty
+              takeStep={props.takeStep}
               createParty={props.createParty}
               history={history}
             />

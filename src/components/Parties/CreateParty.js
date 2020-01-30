@@ -19,6 +19,7 @@ class CreateParty extends React.Component {
           onSubmit={(e) => {
             this.props.createParty(e, this.state.name)
             this.props.history.push('/parties')
+            this.props.takeStep()
           }}
         >
           <label>
@@ -30,7 +31,7 @@ class CreateParty extends React.Component {
               onChange={(e) => this.handleChange(e)}
             />
           </label>
-          <button>Create</button>
+          <button class='create-button'>Create</button>
         </form>
       </div>
     );

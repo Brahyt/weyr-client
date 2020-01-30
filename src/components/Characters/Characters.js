@@ -11,7 +11,7 @@ class Characters extends React.Component {
     return (
       <section className="character-container">
         <h1 data-test='title'>Characters</h1>
-        <NavLink to="/characters/create">Create</NavLink>
+        <NavLink className='create-character' to="/characters/create" onClick={() => this.props.takeStep()}>Create</NavLink>
         <Switch>
         <Route
           exact path="/characters/edit"
@@ -35,6 +35,7 @@ class Characters extends React.Component {
               parties={this.props.parties}
               handleSubmitChar={this.props.handleSubmitChar}
               history={history}
+              takeStep={this.props.takeStep}
             />
           )}
         />

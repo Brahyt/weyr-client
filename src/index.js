@@ -6,7 +6,7 @@ import App from './App';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route 
+    <Route
       path="/"
       render={({match, history}) => (
         <App

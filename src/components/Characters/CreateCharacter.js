@@ -47,6 +47,7 @@ class CreateCharacter extends React.Component {
           onSubmit={(e) => {
             this.props.handleSubmitChar(e, this.state)
             this.props.history.push('/characters')
+            this.props.takeStep()
           }}
         >
           <label>
@@ -139,7 +140,7 @@ class CreateCharacter extends React.Component {
 
             </select>
           </label>
-          <label>
+          <label className="party-choice">
             Party:
             <select
               id="party_id"
@@ -287,7 +288,7 @@ class CreateCharacter extends React.Component {
               })}
             </select>
           </label>
-          <button>Create</button>
+          <button className="create-char-button">Create</button>
           <button
             onClick={(e) => this.cancel(e)}
           >Cancel</button>
