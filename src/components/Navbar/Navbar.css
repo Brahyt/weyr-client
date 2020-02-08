@@ -4,11 +4,12 @@ nav {
   padding: 1rem;
 }
 nav .link {
+  font-size: 1.2rem;
   margin: 2%;
   font-family: var(--bigfont);
 }
 nav .home {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .link:link {
   color: var(--blackbrown);

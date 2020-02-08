@@ -1,14 +1,21 @@
+.splash-page {
+  width: 100%;
+}
+
 .dragon {
   width: 90%;
-  margin: 5%;
+  margin: 10px;
 }
 
 p {
-  margin: 5% 10% 5% 10%;
+  margin: 10px 10% 5% 10%;
 }
 
 @media only screen and (min-width: 700px) {
   .dragon { 
     width: 700px;
+  }
+  .splash-page p {
+    font-size: 30px;
   }
 }
