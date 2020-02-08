@@ -4,9 +4,22 @@ form {
   padding: 5%;
   margin: 0 auto 0 auto;
 }
-input {
+input, select {
+  font-size: 1.3rem;
+  padding: 4px;
   margin-bottom: 5%;
   display: block;
+}
+input {
+  height: 2rem;
+}
+
+select {
+  height: 3rem;
+}
+
+label {
+  font-size: 1.3rem;
 }
 .form-container {
   width: 100%;
