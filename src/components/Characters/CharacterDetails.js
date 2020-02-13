@@ -1,19 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
 import './CharacterDetails.css';
 
-class CharacterDetails extends React.Component {
-  constructor(props){
-    super(props)
+function CharacterDetails(props){
+  useEffect(() => {
+    props.linkToChar(props.match.params.id)
+  })
+  const {character} = props
+  const {equipment, stickers} = props.character
+  const buildStickers = () => {
+    return stickers.map(sticker => {
+          return (
+            <>
+              <h4>{sticker.title}</h4>
+              <p>{sticker.description}</p>
+              <p>Cost: <em>{sticker.cost}</em></p>
+            </>
+          )
+        })
   }
 
-  componentDidMount(){
-    this.props.linkToChar(this.props.match.params.id)
-  }
 
-  render(){
-  const {character} = this.props
-  const {equipment, stickers} = this.props.character
   return (
     <div className="char-details-page" data-test="char-details-page">
       <h2>{character.name}</h2>
@@ -32,21 +39,12 @@ class CharacterDetails extends React.Component {
       </div>
       <div className='stickers'>
       <h3>Stickers</h3>
-        {!stickers ? "" : stickers.map(sticker => {
-          return (
-            <>
-              <h4>{sticker.title}</h4>
-              <p>{sticker.description}</p>
-              <p>Cost: <em>{sticker.cost}</em></p>
-            </>
-          )
-        })}
+      
+      {!stickers ? "" : buildStickers()}
       </div>
       <NavLink to="/characters/edit">Edit</NavLink>
     </div>
-
   );
-  }
 }
 
 export default CharacterDetails;

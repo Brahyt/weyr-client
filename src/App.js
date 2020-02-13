@@ -10,7 +10,7 @@ import LogIn from './components/Users/LogIn';
 import Splash from './components/Splash/Splash';
 import TokenService from './services/token-service';
 import Joyride from 'react-joyride';
-import fixtureSteps from './fixtures/fixtures';
+import {fixtureSteps} from './fixtures/fixtures';
 
 class App extends React.Component {
   constructor(props) {
