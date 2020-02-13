@@ -35,11 +35,12 @@ class CreateCharacter extends React.Component {
   handleSubmit(event){
     event.preventDefault();
   }
-  cancel(e){
+  cancelCreateChar(e){
     e.preventDefault();
     this.props.history.push('/characters')
   }
   render() {
+    /*standardize values from 0-15*/
     const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     return (
       <div className="char-form-container" data-test="char-form-container">
@@ -290,7 +291,7 @@ class CreateCharacter extends React.Component {
           </label>
           <button className="create-char-button">Create</button>
           <button
-            onClick={(e) => this.cancel(e)}
+            onClick={(e) => this.cancelCreateChar(e)}
           >Cancel</button>
         </form>
       </div>
