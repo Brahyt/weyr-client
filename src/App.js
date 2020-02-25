@@ -23,8 +23,7 @@ class App extends React.Component {
       party: {},
       loggedIn: false,
       stepIndex: 0,
-      steps: [
-      ],
+      steps: [],
     };
   }
   componentDidMount() {
