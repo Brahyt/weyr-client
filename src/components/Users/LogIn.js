@@ -1,56 +1,40 @@
 import React from 'react';
-import './LogIn.css'
+import './LogIn.css';
 
-class LogIn extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      user_email: '',
-      user_password: '',
-    }
-  }
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
-  }
-  render(){
-    const submitLogin = (e) => {
-      this.props.logIn(e, this.state)
-    }
-    return (
-      <div className="form-container">
-        <form
-          onSubmit={(e) => {
-            submitLogin(e)
-          }}
-        >
-          <label>
-            User Name:
-            <input
-              name="user_email"
-              type="text"
-              value={this.state.user_email}
-              onChange={(e) => this.handleChange(e)}
-              required
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              name="user_password"
-              type="password"
-              value={this.state.user_password}
-              onChange={(e) => this.handleChange(e)}
-              required
-            />
-          </label>
-          <button>Log In</button>
-        </form>
-      </div>
-    );
-  }
+function LogIn(props) {
+  const {logIn} = props;
+  const nameRef = React.useRef();
+  const passwordRef = React.useRef();
+
+  const submitLogin = e => {
+    const name = nameRef.current.value;
+    const password = passwordRef.current.value;
+    const payLoad = {user_email: name, user_password: password};
+    props.logIn(e, payLoad);
+  };
+  return (
+    <div className="form-container">
+      <form
+        onSubmit={e => {
+          submitLogin(e);
+        }}>
+        <label>
+          User Name:
+          <input name="user_email" type="text" ref={nameRef} required />
+        </label>
+        <label>
+          Password:
+          <input
+            name="user_password"
+            type="password"
+            ref={passwordRef}
+            required
+          />
+        </label>
+        <button>Log In</button>
+      </form>
+    </div>
+  );
 }
 
 export default LogIn;
-
