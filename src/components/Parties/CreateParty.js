@@ -1,25 +1,14 @@
 import React from 'react';
 
-class CreateParty extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      name: ''
-    }
-  }
-  handleChange = (e) => {
-    this.setState({
-      name: e.target.value
-    })
-  }
-  render(){
+function CreateParty (props) {
+  const nameRef = React.useRef('')
     return (
       <div data-test="create-party">
         <form
           onSubmit={(e) => {
-            this.props.createParty(e, this.state.name)
-            this.props.history.push('/parties')
-            this.props.takeStep()
+            props.createParty(e, nameRef.current.value)
+            props.history.push('/parties')
+            props.takeStep()
           }}
         >
           <label>
@@ -27,15 +16,13 @@ class CreateParty extends React.Component {
             <input 
               name="party_name"
               type="text" 
-              value={this.state.name}
-              onChange={(e) => this.handleChange(e)}
+              ref={nameRef}
             />
           </label>
           <button class='create-button'>Create</button>
         </form>
       </div>
     );
-  }
 }
 
 export default CreateParty;
