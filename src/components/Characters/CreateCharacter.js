@@ -1,10 +1,13 @@
 import React from 'react';
 import './CreateCharacter.css'
 
-class CreateCharacter extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
+function CreateCharacter(props) {
+  const charactorReducer = (state, action) => {
+    
+  }
+  const [state, dispatch] = React.useReducer(
+    charactorReducer,
+    {
       name: '',
       race: 'Human',
       char_class: 'Arcane',
@@ -25,21 +28,20 @@ class CreateCharacter extends React.Component {
       martial: '0',
       devotion: '0'
     }
-  }
-  handleChange(event){
+  )
+  const handleChange(event){
     const target = event.target.name
     this.setState({
       [target]: event.target.value
     })
   }
-  handleSubmit(event){
+  const handleSubmit(event){
     event.preventDefault();
   }
-  cancelCreateChar(e){
+  const cancelCreateChar(e){
     e.preventDefault();
     this.props.history.push('/characters')
   }
-  render() {
     /*standardize values from 0-15*/
     const selectNum = [...Array(16).keys()]
     return (
@@ -296,5 +298,4 @@ class CreateCharacter extends React.Component {
       </div>
     );
   }
-}
 export default CreateCharacter;
