@@ -5,7 +5,7 @@ import './CharacterDetails.css';
 function CharacterDetails(props) {
   useEffect(() => {
     props.linkToChar(props.match.params.id);
-  });
+  },[]);
   const {character} = props;
   const {equipment, stickers} = props.character;
   /*Create a list of stickers if User's Character has stickers

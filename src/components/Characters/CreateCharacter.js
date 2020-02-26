@@ -1,10 +1,46 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './CreateCharacter.css'
 
-class CreateCharacter extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
+function CreateCharacter(props) {
+  const nameRef = useRef()
+  const raceRef = useRef()
+  const char_classRef = useRef()
+  const sub_classRef = useRef()
+  const xpRef = useRef()
+  const hand_sizeRef = useRef()
+  const healthRef = useRef()
+  const party_idRef = useRef()
+  const user_idRef = useRef()
+  const sticker_1_idRef = useRef()
+  const sticker_2_idRef = useRef()
+  const sticker_3_idRef = useRef()
+  const sticker_4_idRef = useRef()
+  const sticker_5_idRef = useRef()
+  const sticker_6_idRef = useRef()
+  const arcaneRef = useRef()
+  const deceptionRef = useRef()
+  const martialRef = useRef()
+  const devotionRef = useRef()
+
+  const charactorReducer = (state, action) => {
+    if(action.type === 'changeValue'){
+      const charTrait = action.ref.current.name
+      const charValue = action.ref.current.value
+      return {
+        ...state,
+        [charTrait]: charValue
+      }
+    }
+    else if(action.type === 'submit'){
+        props.handleSubmitChar(action.event, state)
+        props.history.push('/characters')
+        props.takeStep()
+      return state
+    }
+  }
+  const [state, dispatch] = React.useReducer(
+    charactorReducer,
+    {
       name: '',
       race: 'Human',
       char_class: 'Arcane',
@@ -25,39 +61,26 @@ class CreateCharacter extends React.Component {
       martial: '0',
       devotion: '0'
     }
-  }
-  handleChange(event){
-    const target = event.target.name
-    this.setState({
-      [target]: event.target.value
-    })
-  }
-  handleSubmit(event){
-    event.preventDefault();
-  }
-  cancelCreateChar(e){
+  )
+  const cancelCreateChar = (e) => {
     e.preventDefault();
-    this.props.history.push('/characters')
+    props.history.push('/characters')
   }
-  render() {
     /*standardize values from 0-15*/
-    const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    const selectNum = [...Array(16).keys()]
     return (
       <div className="char-form-container" data-test="char-form-container">
         <form
-          onSubmit={(e) => {
-            this.props.handleSubmitChar(e, this.state)
-            this.props.history.push('/characters')
-            this.props.takeStep()
-          }}
+          onSubmit={(e) => dispatch({type: "submit", event: e})}
         >
           <label>
             Name:
             <input
               type="text"
               name="name"
-              value={this.state.name}
-              onChange={(e) => this.handleChange(e)}
+              value={state.name}
+              ref={nameRef}
+              onChange={() => dispatch({type: 'changeValue', ref: nameRef})}
             />
           </label>
           <label>
@@ -65,8 +88,9 @@ class CreateCharacter extends React.Component {
             <select
               id="race"
               name="race"
-              value={this.state.race}
-              onChange={(e) => this.handleChange(e)}
+              value={state.race}
+              ref={raceRef}
+              onChange={() => dispatch({type: 'changeValue', ref: raceRef})}
             >
               <option value="Human">Human</option>
               <option value="Shield Dwarf">Shield Dwarf</option>
@@ -80,7 +104,9 @@ class CreateCharacter extends React.Component {
             <select
               id="char_class"
               name="char_class"
-              onChange={(e) => this.handleChange(e)}
+              value={state.char_class}
+              ref={char_classRef}
+              onChange={() => dispatch({type: 'changeValue', ref: char_classRef})}
             >
               <option value="Arcane">Arcane</option>
               <option value="Deception">Deception</option>
@@ -93,7 +119,9 @@ class CreateCharacter extends React.Component {
             <select
               id="sub_class"
               name="sub_class"
-              onChange={(e) => this.handleChange(e)}
+              value={state.sub_class}
+              ref={sub_classRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sub_classRef})}
             >
               <option value="Wizard">Wizard</option>
               <option value="Rogue">Rogue</option>
@@ -106,7 +134,9 @@ class CreateCharacter extends React.Component {
             <select
               id="xp"
               name="xp"
-              onChange={(e) => this.handleChange(e)}
+              value={state.xp}
+              ref={xpRef}
+              onChange={() => dispatch({type: 'changeValue', ref: xpRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -118,13 +148,13 @@ class CreateCharacter extends React.Component {
             <select
               id="hand_size" 
               name="hand_size"
-              value={this.state.hand_size}
-              onChange={(e) => this.handleChange(e)}
+              value={state.hand_size}
+              ref={hand_sizeRef}
+              onChange={() => dispatch({type: 'changeValue', ref: hand_sizeRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
               })}
-            
             </select>
           </label>
           <label>
@@ -132,8 +162,9 @@ class CreateCharacter extends React.Component {
             <select
               id="health"
               name="health"
-              value={this.state.health}
-              onChange={(e) => this.handleChange(e)}
+              value={state.health}
+              ref={healthRef}
+              onChange={() => dispatch({type: 'changeValue', ref: healthRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -146,11 +177,12 @@ class CreateCharacter extends React.Component {
             <select
               id="party_id"
               name="party_id"
-              value={this.state.party_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.party_id}
+              ref={party_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: party_idRef})}
             >
               <option value="0">None</option>
-              {this.props.parties.map(party => {
+              {props.parties.map(party => {
                 return <option 
                   key={party.party_id} 
                   value={party.party_id}>{party.name}</option>
@@ -162,8 +194,9 @@ class CreateCharacter extends React.Component {
             <select
               id="arcane"
               name="arcane"
-              value={this.state.arcane}
-              onChange={(e) => this.handleChange(e)}
+              value={state.arcane}
+              ref={arcaneRef}
+              onChange={() => dispatch({type: 'changeValue', ref: arcaneRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -176,8 +209,9 @@ class CreateCharacter extends React.Component {
             <select
               id="deception" 
               name="deception"
-              value={this.state.deception}
-              onChange={(e) => this.handleChange(e)}
+              value={state.deception}
+              ref={deceptionRef}
+              onChange={() => dispatch({type: 'changeValue', ref: deceptionRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -190,8 +224,9 @@ class CreateCharacter extends React.Component {
             <select 
               id="martial"
               name="martial"
-              value={this.state.martial}
-              onChange={(e) => this.handleChange(e)}
+              value={state.martial}
+              ref={martialRef}
+              onChange={() => dispatch({type: 'changeValue', ref: martialRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -203,8 +238,9 @@ class CreateCharacter extends React.Component {
             <select 
               id="devotion" 
               name="devotion"
-              value={this.state.devotion}
-              onChange={(e) => this.handleChange(e)}
+              value={state.devotion}
+              ref={devotionRef}
+              onChange={() => dispatch({type: 'changeValue', ref: devotionRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -216,10 +252,11 @@ class CreateCharacter extends React.Component {
             <select
               id="sticker_1_id"
               name="sticker_1_id"
-              value={this.state.sticker_1_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_1_id}
+              ref={sticker_1_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_1_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
@@ -229,10 +266,11 @@ class CreateCharacter extends React.Component {
             <select 
               id="sticker_2_id" 
               name="sticker_2_id"
-              value={this.state.sticker_2_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_2_id}
+              ref={sticker_2_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_2_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
@@ -242,10 +280,11 @@ class CreateCharacter extends React.Component {
             <select 
               id="sticker_3_id" 
               name="sticker_3_id"
-              value={this.state.sticker_3_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_3_id}
+              ref={sticker_3_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_3_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
@@ -255,10 +294,11 @@ class CreateCharacter extends React.Component {
             <select 
               id="sticker_4_id"
               name="sticker_4_id"
-              value={this.state.sticker_4_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_4_id}
+              ref={sticker_4_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_4_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
@@ -268,10 +308,11 @@ class CreateCharacter extends React.Component {
             <select 
               id="sticker_5_id"
               name="sticker_5_id"
-              value={this.state.sticker_5_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_5_id}
+              ref={sticker_5_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_5_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
@@ -281,21 +322,21 @@ class CreateCharacter extends React.Component {
             <select 
               id="sticker_6_id"
               name="sticker_6_id"
-              value={this.state.sticker_6_id}
-              onChange={(e) => this.handleChange(e)}
+              value={state.sticker_6_id}
+              ref={sticker_6_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_6_idRef})}
             >
-              {this.props.stickers.map(sticker => {
+              {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
               })}
             </select>
           </label>
           <button className="create-char-button">Create</button>
           <button
-            onClick={(e) => this.cancelCreateChar(e)}
+            onClick={(e) => cancelCreateChar(e)}
           >Cancel</button>
         </form>
       </div>
     );
   }
-}
 export default CreateCharacter;

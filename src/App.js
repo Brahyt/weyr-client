@@ -231,7 +231,6 @@ class App extends React.Component {
   };
 
   render(props) {
-    console.log(this.state);
     return (
       <>
         {!this.state.characters.length ? this.joyRide() : null}
