@@ -23,6 +23,14 @@ function CreateCharacter(props) {
   const devotionRef = useRef()
 
   const charactorReducer = (state, action) => {
+    if(action.type === 'changeValue'){
+      const charTrait = action.ref.current.name
+      const charValue = action.ref.current.value
+      return {
+        ...state,
+        [charTrait]: charValue
+      }
+    }
   }
   const [state, dispatch] = React.useReducer(
     charactorReducer,
@@ -48,9 +56,6 @@ function CreateCharacter(props) {
       devotion: '0'
     }
   )
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  }
   const cancelCreateChar = (e) => {
     e.preventDefault();
     props.history.push('/characters')
@@ -71,8 +76,9 @@ function CreateCharacter(props) {
             <input
               type="text"
               name="name"
-              defaultValue={state.name}
+              value={state.name}
               ref={nameRef}
+              onChange={() => dispatch({type: 'changeValue', ref: nameRef})}
             />
           </label>
           <label>
@@ -80,8 +86,9 @@ function CreateCharacter(props) {
             <select
               id="race"
               name="race"
-              defaultValue={state.race}
+              value={state.race}
               ref={raceRef}
+              onChange={() => dispatch({type: 'changeValue', ref: raceRef})}
             >
               <option value="Human">Human</option>
               <option value="Shield Dwarf">Shield Dwarf</option>
@@ -95,8 +102,9 @@ function CreateCharacter(props) {
             <select
               id="char_class"
               name="char_class"
-              defaultValue={state.char_class}
+              value={state.char_class}
               ref={char_classRef}
+              onChange={() => dispatch({type: 'changeValue', ref: char_classRef})}
             >
               <option value="Arcane">Arcane</option>
               <option value="Deception">Deception</option>
@@ -109,8 +117,9 @@ function CreateCharacter(props) {
             <select
               id="sub_class"
               name="sub_class"
-              defaultValue={state.sub_class}
+              value={state.sub_class}
               ref={sub_classRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sub_classRef})}
             >
               <option value="Wizard">Wizard</option>
               <option value="Rogue">Rogue</option>
@@ -123,8 +132,9 @@ function CreateCharacter(props) {
             <select
               id="xp"
               name="xp"
-              defaultValue={state.xp}
+              value={state.xp}
               ref={xpRef}
+              onChange={() => dispatch({type: 'changeValue', ref: xpRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -136,8 +146,9 @@ function CreateCharacter(props) {
             <select
               id="hand_size" 
               name="hand_size"
-              defaultValue={state.hand_size}
+              value={state.hand_size}
               ref={hand_sizeRef}
+              onChange={() => dispatch({type: 'changeValue', ref: hand_sizeRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -149,8 +160,9 @@ function CreateCharacter(props) {
             <select
               id="health"
               name="health"
-              defaultValue={state.health}
+              value={state.health}
               ref={healthRef}
+              onChange={() => dispatch({type: 'changeValue', ref: healthRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -163,8 +175,9 @@ function CreateCharacter(props) {
             <select
               id="party_id"
               name="party_id"
-              defaultValue={state.party_id}
+              value={state.party_id}
               ref={party_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: party_idRef})}
             >
               <option value="0">None</option>
               {props.parties.map(party => {
@@ -179,8 +192,9 @@ function CreateCharacter(props) {
             <select
               id="arcane"
               name="arcane"
-              defaultValue={state.arcane}
+              value={state.arcane}
               ref={arcaneRef}
+              onChange={() => dispatch({type: 'changeValue', ref: arcaneRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -193,8 +207,9 @@ function CreateCharacter(props) {
             <select
               id="deception" 
               name="deception"
-              defaultValue={state.deception}
+              value={state.deception}
               ref={deceptionRef}
+              onChange={() => dispatch({type: 'changeValue', ref: deceptionRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -207,8 +222,9 @@ function CreateCharacter(props) {
             <select 
               id="martial"
               name="martial"
-              defaultValue={state.martial}
-              ref={deceptionRef}
+              value={state.martial}
+              ref={martialRef}
+              onChange={() => dispatch({type: 'changeValue', ref: martialRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -220,8 +236,9 @@ function CreateCharacter(props) {
             <select 
               id="devotion" 
               name="devotion"
-              defaultValue={state.devotion}
+              value={state.devotion}
               ref={devotionRef}
+              onChange={() => dispatch({type: 'changeValue', ref: devotionRef})}
             >
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
@@ -233,8 +250,9 @@ function CreateCharacter(props) {
             <select
               id="sticker_1_id"
               name="sticker_1_id"
-              defaultValue={state.sticker_1_id}
+              value={state.sticker_1_id}
               ref={sticker_1_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_1_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
@@ -246,8 +264,9 @@ function CreateCharacter(props) {
             <select 
               id="sticker_2_id" 
               name="sticker_2_id"
-              defaultValue={state.sticker_2_id}
+              value={state.sticker_2_id}
               ref={sticker_2_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_2_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
@@ -259,8 +278,9 @@ function CreateCharacter(props) {
             <select 
               id="sticker_3_id" 
               name="sticker_3_id"
-              defaultValue={state.sticker_3_id}
+              value={state.sticker_3_id}
               ref={sticker_3_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_3_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
@@ -272,8 +292,9 @@ function CreateCharacter(props) {
             <select 
               id="sticker_4_id"
               name="sticker_4_id"
-              defaultValue={state.sticker_4_id}
+              value={state.sticker_4_id}
               ref={sticker_4_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_4_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
@@ -285,8 +306,9 @@ function CreateCharacter(props) {
             <select 
               id="sticker_5_id"
               name="sticker_5_id"
-              defaultValue={state.sticker_5_id}
+              value={state.sticker_5_id}
               ref={sticker_5_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_5_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
@@ -298,8 +320,9 @@ function CreateCharacter(props) {
             <select 
               id="sticker_6_id"
               name="sticker_6_id"
-              defaultValue={state.sticker_6_id}
+              value={state.sticker_6_id}
               ref={sticker_6_idRef}
+              onChange={() => dispatch({type: 'changeValue', ref: sticker_6_idRef})}
             >
               {props.stickers.map(sticker => {
                 return <option key={sticker.sticker_id} value={sticker.sticker_id}>{sticker.sticker_title}</option>
