@@ -31,6 +31,12 @@ function CreateCharacter(props) {
         [charTrait]: charValue
       }
     }
+    else if(action.type === 'submit'){
+        props.handleSubmitChar(action.event, state)
+        props.history.push('/characters')
+        props.takeStep()
+      return state
+    }
   }
   const [state, dispatch] = React.useReducer(
     charactorReducer,
@@ -65,11 +71,7 @@ function CreateCharacter(props) {
     return (
       <div className="char-form-container" data-test="char-form-container">
         <form
-          onSubmit={(e) => {
-            props.handleSubmitChar(e, state)
-            props.history.push('/characters')
-            props.takeStep()
-          }}
+          onSubmit={(e) => dispatch({type: "submit", event: e})}
         >
           <label>
             Name:
