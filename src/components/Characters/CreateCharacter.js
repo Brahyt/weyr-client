@@ -41,7 +41,7 @@ class CreateCharacter extends React.Component {
   }
   render() {
     /*standardize values from 0-15*/
-    const selectNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    const selectNum = [...Array(16).keys()]
     return (
       <div className="char-form-container" data-test="char-form-container">
         <form
@@ -124,7 +124,6 @@ class CreateCharacter extends React.Component {
               {selectNum.map(num => {
                 return <option key={num} value={num}>{num}</option>
               })}
-            
             </select>
           </label>
           <label>
